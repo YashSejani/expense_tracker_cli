@@ -1,0 +1,11 @@
+{
+    "next_id": 2,
+    "expenses": [
+        {
+            "id": 1,
+            "date": "2026-07-13T01:25:55.1951841+05:30",
+            "description": "Lunch",
+            "amount": 20
+        }
+    ]
+}
