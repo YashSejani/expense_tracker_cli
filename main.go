@@ -50,7 +50,9 @@ func main() {
 			fmt.Println("Example: expense-tracker delete --id 1")
 			return
 		}
-		manager.DeleteExpense(*id)
+		if !manager.DeleteExpense(*id) {
+			return 
+		}
 
 	case "summary":
 		summCmd := flag.NewFlagSet("summary", flag.ExitOnError)

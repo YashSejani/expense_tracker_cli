@@ -14,7 +14,7 @@ func (em *ExpenseManager) AddExpense(UserDescription string, Amount int) {
 		Amount:      Amount,
 	}
 	em.Storage.Expenses = append(em.Storage.Expenses, newExpense)
-	fmt.Printf("Expense added successfully (ID: %d)",em.Storage.NextId)
+	fmt.Printf("Expense added successfully (ID: %d)\n",em.Storage.NextId)
 	em.Storage.NextId++
 }
 
@@ -32,15 +32,16 @@ func (em *ExpenseManager) ListExpense() {
 	}
 }
 
-func (em *ExpenseManager) DeleteExpense(id int) {
+func (em *ExpenseManager) DeleteExpense(id int) bool {
 	for i, expense := range em.Storage.Expenses {
 		if(expense.Id == id) {
 			em.Storage.Expenses = slices.Delete(em.Storage.Expenses, i, i+1)
 			fmt.Printf("Expense deleted successfully (ID: %d)\n", id)
-			return
+			return true
 		}
 	}
 	fmt.Printf("Error: Expense with ID %d does not exist.\n", id)
+	return false
 }
 
 func (em *ExpenseManager) GetSummary(month, year int) {
